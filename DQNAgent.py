@@ -24,15 +24,17 @@ class DQNAgent:
         model.add(Conv2D(512, kernel_size=(7, 7),
                          activation='relu',
                          input_shape=self.state_size))
-        model.add(MaxPooling2D(pool_size=(5, 5)))
+        model.add(MaxPooling2D(pool_size=(6, 6)))
         model.add(Dropout(0.25))
-        model.add(Conv2D(512, (5, 5), activation='relu'))
-        model.add(MaxPooling2D(pool_size=(5, 5)))
+        model.add(Conv2D(1024, (5, 5), activation='relu'))
+        model.add(MaxPooling2D(pool_size=(4, 4)))
         model.add(Flatten())
         model.add(Dropout(0.25))
         model.add(Dense(512, activation='relu'))
         model.add(Dropout(0.25))
-        model.add(Dense(256, activation='relu'))
+        model.add(Dense(128, activation='relu'))
+        model.add(Dropout(0.25))
+        model.add(Dense(32, activation='relu'))
         model.add(Dropout(0.25))
         model.add(Dense(self.action_size, activation='linear'))
         model.compile(loss='mse',

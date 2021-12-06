@@ -10,7 +10,7 @@ if __name__ == "__main__":
     state_size = env.observation_space.shape
     action_size = env.action_space.n
     agent = DQNAgent(state_size, action_size, env)
-    #agent.load("sonic-dqn1.h5")
+    agent.load("sonic-dqn1.h5")
     agent.epsilon = 0
     done = False
     while True:
